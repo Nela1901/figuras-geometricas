@@ -1,5 +1,10 @@
-# Este script contiene errores comunes que violan las normas PEP 8
+"""
+Este script contiene clases que representan diferentes figuras geométricas
+(tales como rectángulo, triángulo y círculo) y permite calcular el área de cada una de ellas.
 
+Las clases están diseñadas utilizando la herencia de clases abstractas para promover
+la reutilización de código y la implementación de la interfaz común `calcular_area`.
+"""
 from abc import ABC, abstractmethod
 
 class FiguraGeometrica(ABC):
@@ -7,10 +12,12 @@ class FiguraGeometrica(ABC):
     @abstractmethod
     def calcular_area(self):
         """Método abstracto para calcular el área de una figura."""
-        pass
 
-
+    def tipo_figura(self):
+        """Método para devolver el tipo de figura."""
+        return self.__class__.__name__
 class Rectangulo(FiguraGeometrica):
+    """Clase que representa un rectángulo y calcula su área."""
     def __init__(self, base , altura):
         self.base=base
         self.altura=altura
@@ -19,9 +26,12 @@ class Rectangulo(FiguraGeometrica):
         """Calcula el área del rectángulo."""
         area=self.base*self.altura
         return area
-
+    def mostrar_propiedades(self):
+        """Muestra las propiedades del rectángulo."""
+        return f"Base: {self.base}, Altura: {self.altura}"
 
 class Triangulo(FiguraGeometrica):
+    """Clase que representa un triángulo y calcula su área."""
     def __init__(self, base , altura):
         self.base=base
         self.altura=altura
@@ -33,6 +43,7 @@ class Triangulo(FiguraGeometrica):
 
 
 class Circulo(FiguraGeometrica):
+    """Clase que representa un círculo y calcula su área."""
     def __init__(self, radio):
         self.pi =3.14159
         self.radio=radio
